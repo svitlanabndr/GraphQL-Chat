@@ -1,0 +1,10 @@
+#endpoint: ''
+endpoint: https://eu1.prisma.sh/svitlana-prykhodko-d4c53c/chat-backend/dev
+
+datamodel: datamodel.prisma
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client
+hooks:
+  post-deploy:
+    - prisma generate

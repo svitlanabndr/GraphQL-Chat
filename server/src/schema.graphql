@@ -1,0 +1,38 @@
+type Query {
+    info: String!
+    products(filter: String, skip: Int, first: Int, orderBy: ProductOrderByInput): Products!
+}
+
+enum ProductOrderByInput {
+    title_DESC
+    title_ASC
+    createdAt_DESC
+    createdAt_ASC
+}
+
+type Mutation {
+    postProduct(title: String!, price: Float!): Product!
+    postReview(productId: ID!, text: String!): Review!
+}
+
+type Subscription {
+    newProduct: Product
+}
+
+type Products {
+    productList: [Product!]!
+    count: Int!
+}
+
+type Product {
+    id: ID!
+    title: String!
+    price: Float!
+    reviews: [Review]
+}
+
+type Review {
+    id: ID!
+    text: String!
+    product: Product!
+}
