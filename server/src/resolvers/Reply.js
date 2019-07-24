@@ -1,9 +1,9 @@
-function product(parent, args, context) {
+function message(parent, args, context) {
     return context.prisma.review({
         id: parent.id
-    }).product();
+    }).message();
 }
 
 module.exports = {
-    product
+    message
 }

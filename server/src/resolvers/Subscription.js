@@ -1,30 +1,44 @@
-function newProductSubscribe(parent, args, context, info) {
-    return context.prisma.$subscribe.product({
+function newMessageSubscribe(parent, args, context, info) {
+    return context.prisma.$subscribe.message({
         mutation_in: ['CREATED']
     }).node();
 }
 
-const newProduct = {
-    subscribe: newProductSubscribe,
+const newMessage = {
+    subscribe: newMessageSubscribe,
     resolve: payload => {
         return payload;
     }
 };
 
-function newReviewSubscribe(parent, args, context, info) {
-    return context.prisma.$subscribe.review({
+function newReplySubscribe(parent, args, context, info) {
+    return context.prisma.$subscribe.reply({
         mutation_in: ['CREATED']
     }).node();
 }
 
-const newReview = {
-    subscribe: newReviewSubscribe,
+const newReply = {
+    subscribe: newReplySubscribe,
+    resolve: payload => {
+        return payload;
+    }
+};
+
+function newReactionSubscribe(parent, args, context, info) {
+    return context.prisma.$subscribe.message({
+        mutation_in: ['UPDATED']
+    }).node();
+}
+
+const newReaction = {
+    subscribe: newReactionSubscribe,
     resolve: payload => {
         return payload;
     }
 };
 
 module.exports = {
-    newProduct,
-    newReview
+    newMessage,
+    newReply,
+    newReaction
 }
