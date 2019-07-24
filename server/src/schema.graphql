@@ -16,7 +16,8 @@ type Mutation {
 }
 
 type Subscription {
-    newProduct: Product
+    newProduct: Product,
+    newReview: Review
 }
 
 type Products {

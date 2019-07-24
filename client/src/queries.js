@@ -53,3 +53,12 @@ export const NEW_PRODUCTS_SUBSCRIPTION = gql`
     }
   }
 `;
+
+export const NEW_REVIEWS_SUBSCRIPTION = gql`
+  subscription {
+    newReview {
+      id
+      text
+    }
+  }
+`;
