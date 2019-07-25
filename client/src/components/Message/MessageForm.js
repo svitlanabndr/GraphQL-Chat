@@ -9,21 +9,6 @@ const MessageForm = props => {
     if (body.trim().length > 0) postMutation(body);
   }
 
-  const _updateStoreAfterAddingMessage = (store, newMessage) => {
-    const orderBy = 'createdAt_DESC';
-    const data = store.readQuery({
-      query: MESSAGE_QUERY,
-      variables: {
-        orderBy
-      }
-    });
-    data.messages.messageList.unshift(newMessage);
-    store.writeQuery({
-      query: MESSAGE_QUERY,
-      data
-    });
-  };
-
   return (
     <div className="message-item top">
       <div className="body-wrapper">

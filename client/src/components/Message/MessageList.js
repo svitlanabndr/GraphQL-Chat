@@ -60,13 +60,11 @@ const MessageList = props => {
 
   return (
     <div className='message-list'>
-
       <Select
         value={orderBy}
         onChange={setOrderBy}
         options={options}
       />
-
       <div>
         <input
           className='filter'
@@ -76,9 +74,7 @@ const MessageList = props => {
           onChange={e => setFilter(e.target.value)}
         />
       </div>
-
       <MessageForm/>
-
       <Query 
         query={MESSAGE_QUERY} 
         variables={{ orderBy: orderBy.value, filter, offset: 0,
@@ -88,8 +84,10 @@ const MessageList = props => {
         {({ loading, error, data, subscribeToMore, fetchMore }) => {
           if (loading) return <div>Loading...</div>;
           if (error) return <div>Fetch error</div>;
+
           _subscribeToNewMessages(subscribeToMore);
           _subscribeToNewReactions(subscribeToMore);
+          
           const { messages: { messageList } } = data;
 
           return (
@@ -102,7 +100,6 @@ const MessageList = props => {
           );
         }}
       </Query>
-
     </div>
   );
 };
