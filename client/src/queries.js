@@ -42,6 +42,36 @@ export const POST_REPLY_MUTATION = gql`
   }
 `;
 
+export const UPDATE_LIKECOUNT_MUTATION = gql`
+  mutation PostMutation($id: ID!) {
+    updateLikeCount(id: $id) {
+      id
+      body
+      likesCount
+      dislikesCount
+      replies {
+        id
+        body
+      }
+    }
+  }
+`;
+
+export const UPDATE_DISLIKECOUNT_MUTATION = gql`
+  mutation PostMutation($id: ID!) {
+    updateDislikeCount(id: $id) {
+      id
+      body
+      likesCount
+      dislikesCount
+      replies {
+        id
+        body
+      }
+    } 
+  }
+`;
+
 export const NEW_MESSAGES_SUBSCRIPTION = gql`
   subscription {
     newMessage {
