@@ -86,3 +86,18 @@ export const NEW_MESSAGES_SUBSCRIPTION = gql`
     }
   }
 `;
+
+export const NEW_REACTIONS_SUBSCRIPTION = gql `
+  subscription {
+    newReaction {
+      id
+      body
+      likesCount
+      dislikesCount
+      replies {
+        id
+        body
+      }
+    }
+  }
+`;

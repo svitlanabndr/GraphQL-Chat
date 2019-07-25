@@ -2,8 +2,8 @@ type Message {
     id: ID! @id
     createdAt: DateTime! @createdAt
     body: String!
-    likesCount: Int! @default(value: 1)
-    dislikesCount: Int! @default(value: 1)
+    likesCount: Int! @default(value: 0)
+    dislikesCount: Int! @default(value: 0)
     replies: [Reply]
 }
 
