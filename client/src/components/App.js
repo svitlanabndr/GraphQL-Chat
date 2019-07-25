@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import ProductList from './Product/ProductList';
-import ProductForm from './Product/ProductForm';
+import MessageList from './Message/MessageList';
+import MessageForm from './Message/MessageForm';
 // import './App.scss';
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
         <Link to="/add-product">Add product</Link>
       </div>
       <Switch>
-        <Route exact path="/" component={ProductList} />
-        <Route exact path="/add-product" component={ProductForm} />
+        <Route exact path="/" component={MessageList} />
+        <Route exact path="/add-product" component={MessageForm} />
       </Switch>
     </div>
   );

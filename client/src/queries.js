@@ -1,64 +1,58 @@
 import gql from 'graphql-tag';
 
-export const PRODUCT_QUERY = gql`
-  query productQuery($orderBy: ProductOrderByInput) {
-    products(orderBy: $orderBy) {
+export const MESSAGE_QUERY = gql`
+  query messageQuery($orderBy: MessageOrderByInput) {
+    messages(orderBy: $orderBy) {
       count
-      productList {
+      messageList {
         id
-        title
-        price
-        reviews {
+        body
+        likesCount
+        dislikesCount
+        replies {
           id
-          text
+          body
         }
       }
     }
   }
 `;
 
-export const POST_PRODUCT_MUTATION = gql`
-  mutation PostMutation($title: String!, $price: Float!) {
-    postProduct(title: $title, price: $price) {
+export const POST_MESSAGE_MUTATION = gql`
+  mutation PostMutation($body: String!) {
+    postMessage(body: $body) {
       id
-      title
-      price
-      reviews {
+      body
+      likesCount
+      dislikesCount
+      replies {
         id
-        text
+        body
       }
     }
   }
 `;
 
-export const POST_REVIEW_MUTATION = gql`
-  mutation PostMutation($productId: ID!, $text: String!) {
-    postReview(productId: $productId, text: $text) {
+export const POST_REPLY_MUTATION = gql`
+  mutation PostMutation($messageId: ID!, $body: String!) {
+    postReply(messageId: $messageId, body: $body) {
       id
-      text
+      body
     }
   }
 `;
 
-export const NEW_PRODUCTS_SUBSCRIPTION = gql`
+export const NEW_MESSAGES_SUBSCRIPTION = gql`
   subscription {
-    newProduct {
+    newMessage {
       id
-      title
-      price
-      reviews {
+      body
+      likesCount
+      dislikesCount
+      replies {
         id
-        text
+        body
       }
-    }
-  }
-`;
-
-export const NEW_REVIEWS_SUBSCRIPTION = gql`
-  subscription {
-    newReview {
-      id
-      text
     }
   }
 `;
