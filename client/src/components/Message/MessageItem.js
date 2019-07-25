@@ -11,7 +11,7 @@ const MessageItem = props => {
   return (
     <div className="message-item">
       <div className="body-wrapper">
-        <h2>{body}</h2>
+        <h2>{body} <span className='id'>#{id.substr(id.length - 3)}</span></h2>
         <div className='reaction'>
           <span>{likesCount} </span>
           <Mutation
