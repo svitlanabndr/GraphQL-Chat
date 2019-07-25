@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import MessageItem from './MessageItem';
 import { MESSAGE_QUERY, NEW_MESSAGES_SUBSCRIPTION, NEW_REACTIONS_SUBSCRIPTION } from '../../queries';
+import MessageForm from './MessageForm';
 
 const MessageList = props => {
   const orderBy = 'createdAt_DESC';
@@ -45,6 +46,7 @@ const MessageList = props => {
             {messageList.map(item => {
               return <MessageItem key={item.id} {...item} />
             })}
+            <MessageForm/>
           </div>
         );
       }}

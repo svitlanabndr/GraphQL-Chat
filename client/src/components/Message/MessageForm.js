@@ -29,10 +29,6 @@ const MessageForm = props => {
       <Mutation
         mutation={POST_MESSAGE_MUTATION}
         variables={{ body }}
-        update={(store, { data: { postMessage } }) => {
-          _updateStoreAfterAddingMessage(store, postMessage);
-        }}
-        onCompleted={() => props.history.push('/')}
       >
         {postMutation =>
           <button className="post-button" onClick={postMutation}>Send</button>
