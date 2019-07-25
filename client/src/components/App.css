@@ -119,3 +119,15 @@ svg {
   margin: 0;
   margin-right: 80%;
 }
+
+.filter {
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  margin-top: 20px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #d3d3d3;
+  font-size: 14px;
+  padding-left: 10px;
+}

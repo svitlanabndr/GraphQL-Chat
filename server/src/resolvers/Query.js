@@ -1,6 +1,6 @@
 async function messages(parent, args, context) {
     const where = args.filter 
-        ? { body: args.filter } 
+        ? { body_contains: args.filter }
         : {};
     
     const messageList = await context.prisma.messages({

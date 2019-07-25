@@ -16,6 +16,7 @@ const MessageList = props => {
   ];
 
   const [orderBy, setOrderBy] = useState(options[0]);
+  const [filter, setFilter] = useState('');
 
   const _subscribeToNewMessages = subscribeToMore => {
     subscribeToMore({
@@ -43,19 +44,31 @@ const MessageList = props => {
 
   return (
     <div className='message-list'>
+
       <Select
         value={orderBy}
         onChange={setOrderBy}
         options={options}
       />
+
+      <div>
+        <input
+          className='filter'
+          type='text' 
+          placeholder='Search by keywords...'
+          value={filter} 
+          onChange={e => setFilter(e.target.value)}
+        />
+      </div>
+
       <MessageForm/>
-      <Query query={MESSAGE_QUERY} variables={{ orderBy: orderBy.value }}>
+
+      <Query query={MESSAGE_QUERY} variables={{ orderBy: orderBy.value, filter }}>
         {({ loading, error, data, subscribeToMore }) => {
           if (loading) return <div>Loading...</div>;
           if (error) return <div>Fetch error</div>;
           _subscribeToNewMessages(subscribeToMore);
           _subscribeToNewReactions(subscribeToMore);
-
           const { messages: { messageList } } = data;
 
           return (
@@ -67,6 +80,7 @@ const MessageList = props => {
           );
         }}
       </Query>
+
     </div>
   );
 };
