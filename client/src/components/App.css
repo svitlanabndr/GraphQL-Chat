@@ -32,23 +32,26 @@
   }
 }
 
+body {
+  background-color: #ebebeb;
+}
+
 .message-list {
   padding: 30px 15px 0 25px;
   width: 60%;
-  height: 450px;
-  overflow-y: auto;
+  min-height: 200px;
+  overflow: auto;
   margin: 0 auto 0 auto;
-  border: 1px solid gray;
+  background-color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .message-item {
-  overflow:hidden; 
-  margin:26px 0 26px;
+  overflow: hidden; 
+  margin: 26px auto;
   display: block;
   padding: 0;
   width: 60%;
-  float: left;
   background: #ebebeb none repeat scroll 0 0;
   border-radius: 5px;
   font-family: Gill Sans, sans-serif;
@@ -130,4 +133,9 @@ svg {
   border: 1px solid #d3d3d3;
   font-size: 14px;
   padding-left: 10px;
+}
+
+.load-more {
+  width: 100%;
+  float: left;
 }
