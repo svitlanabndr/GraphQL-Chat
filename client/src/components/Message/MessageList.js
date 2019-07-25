@@ -48,6 +48,7 @@ const MessageList = props => {
         onChange={setOrderBy}
         options={options}
       />
+      <MessageForm/>
       <Query query={MESSAGE_QUERY} variables={{ orderBy: orderBy.value }}>
         {({ loading, error, data, subscribeToMore }) => {
           if (loading) return <div>Loading...</div>;
@@ -62,7 +63,6 @@ const MessageList = props => {
               {messageList.map(item => {
                 return <MessageItem key={item.id} {...item} />
               })}
-              <MessageForm/>
             </div>
           );
         }}

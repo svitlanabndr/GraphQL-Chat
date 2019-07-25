@@ -55,7 +55,8 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
 }
-.message-item h2 {
+.message-item h2,
+.message-item input {
   border-radius: 5px;
   background-color: #142c96;
   color: #ebebeb;
@@ -66,6 +67,15 @@
   width: 100%;
   word-wrap: break-word;
   box-sizing: border-box;
+}
+
+.message-item input {
+  border: none;
+  outline: none;
+}
+
+.message-item input::-webkit-input-placeholder {
+  color: #ebebeb;
 }
 
 .body-wrapper{

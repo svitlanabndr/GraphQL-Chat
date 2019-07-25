@@ -21,19 +21,20 @@ const MessageForm = props => {
   };
 
   return (
-    <div className="form-wrapper">
-      <div className="input-wrapper">
-        <input type="text" placeholder="Enter your message here" value={body} onChange={e => setBody(e.target.value)} />
-      </div>
+    <div className="message-item">
+      <div className="body-wrapper">
 
-      <Mutation
-        mutation={POST_MESSAGE_MUTATION}
-        variables={{ body }}
-      >
-        {postMutation =>
-          <button className="post-button" onClick={postMutation}>Send</button>
-        }
-      </Mutation>
+        <input type="text" placeholder="Enter your message here..." value={body} onChange={e => setBody(e.target.value)} />
+
+        <Mutation
+          mutation={POST_MESSAGE_MUTATION}
+          variables={{ body }}
+        >
+          {postMutation =>
+            <button onClick={postMutation}>Send</button>
+          }
+        </Mutation>
+      </div>
     </div>
   );
 };
