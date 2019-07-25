@@ -3,7 +3,7 @@ import React from 'react';
 const ReplyItem = props => {
     const { body } = props;
     return (
-        <p>{body}</p>
+        <p className="reply">{body}</p>
     );
 };
 

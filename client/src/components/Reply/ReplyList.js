@@ -7,7 +7,7 @@ const ReplyList = props => {
     const { messageId, replies } = props;
     
     return (
-        <div className="review-list">
+        <div className="reply-list">
             {replies.length > 0 && <span className="review-list-title">Replies</span>}
             {replies.map(item => {
                 return <ReplyItem key={item.id} {...item} />

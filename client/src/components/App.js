@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import MessageList from './Message/MessageList';
 import MessageForm from './Message/MessageForm';
-// import './App.scss';
+import './App.css';
 
 function App() {
   return (

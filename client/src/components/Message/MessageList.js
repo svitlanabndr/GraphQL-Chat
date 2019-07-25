@@ -34,7 +34,7 @@ const MessageList = props => {
         const { messages: { messageList } } = data;
 
         return (
-          <div className="product-list">
+          <div className="message-list">
             {messageList.map(item => {
               return <MessageItem key={item.id} {...item} />
             })}
