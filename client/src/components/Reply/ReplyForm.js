@@ -48,7 +48,7 @@ const ReplyForm = props => {
         }}
       >
         {postMutation =>
-          <button onClick={() => checkInput(postMutation)}>Reply</button>
+          <button className='send-btn' onClick={() => checkInput(postMutation)}>Reply</button>
         }
       </Mutation>
     </div>
