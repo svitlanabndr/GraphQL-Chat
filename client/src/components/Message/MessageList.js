@@ -77,17 +77,16 @@ const MessageList = props => {
       <MessageForm/>
       <Query 
         query={MESSAGE_QUERY} 
-        variables={{ orderBy: orderBy.value, filter, offset: 0,
-          limit: 5 }}
+        variables={{ orderBy: orderBy.value, filter, offset: 0, limit: 5 }}
         fetchPolicy="cache-and-network"
       >
         {({ loading, error, data, subscribeToMore, fetchMore }) => {
-          if (loading) return <div>Loading...</div>;
-          if (error) return <div>Fetch error</div>;
+          if (loading) return <div className='alert'>Loading...</div>;
+          if (error) return <div className='alert'>Fetch error</div>;
 
           _subscribeToNewMessages(subscribeToMore);
           _subscribeToNewReactions(subscribeToMore);
-          
+
           const { messages: { messageList } } = data;
 
           return (
@@ -95,7 +94,7 @@ const MessageList = props => {
               {messageList.map(item => {
                 return <MessageItem key={item.id} {...item} />
               })}
-              <div className='load-more'><button onClick={() => {onLoadMore(fetchMore, messageList)}}>more...</button></div>
+              <div className='load-more'><button className='send-btn load' onClick={() => {onLoadMore(fetchMore, messageList)}}>Load more...</button></div>
             </div>
           );
         }}

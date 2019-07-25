@@ -180,3 +180,12 @@ textarea {
   font-size: 14px;
   padding-top: 12px;
 }
+
+.load {
+  margin: 0 auto 20px auto;
+}
+
+.alert {
+  margin: 20px auto;
+  color: #142c96;
+}
