@@ -14,7 +14,6 @@ const MessageList = props => {
     { value: 'dislikesCount_DESC', label: 'sorting by dislikes descending' },
     { value: 'dislikesCount_ASC', label: 'sorting by dislikes ascending' },
   ];
-  let i = 0;
   const [orderBy, setOrderBy] = useState(options[0]);
   const [filter, setFilter] = useState('');
 
@@ -42,17 +41,18 @@ const MessageList = props => {
     });
   };
 
+  let paginationCounter = 0;
   const onLoadMore = (fetchMore, messageList) => {
     fetchMore({
       variables: {
-        offset: messageList.length + i
+        offset: messageList.length + paginationCounter
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
         const result = Object.assign({}, prev, {
           messages: {...prev.messages, ...{ messageList: [...prev.messages.messageList, ...fetchMoreResult.messages.messageList] }}
         });
-        i += messageList.length;
+        paginationCounter += messageList.length;
         return result;
       }
     });

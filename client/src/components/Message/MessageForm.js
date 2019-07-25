@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
-import { POST_MESSAGE_MUTATION, MESSAGE_QUERY } from '../../queries';
+import { POST_MESSAGE_MUTATION } from '../../queries';
 
 const MessageForm = props => {
   const [body, setBody] = useState('');
