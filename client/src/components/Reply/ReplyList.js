@@ -18,6 +18,7 @@ const ReplyList = props => {
             {showReplyForm && <ReplyForm
                 messageId={messageId}
                 toggleForm={toggleForm}
+                orderBy={props.orderBy}
             />}
         </div>
     );

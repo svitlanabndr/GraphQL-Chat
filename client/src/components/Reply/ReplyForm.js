@@ -11,20 +11,23 @@ const ReplyForm = props => {
   }
 
   const _updateStoreAfterAddingReply = (store, newReply, messageId) => {
-    const orderBy = 'createdAt_DESC';
     const data = store.readQuery({
       query: MESSAGE_QUERY,
       variables: {
-        orderBy,
+        orderBy: props.orderBy,
         filter: '', 
         offset: 0, 
         limit: 5
       }
     });
+    console.log(data);
     const repliedMessage = data.messages.messageList.find(
       item => item.id === messageId
     );
-    repliedMessage.replies.push(newReply);
+    console.log(repliedMessage)
+    if (repliedMessage) {
+      repliedMessage.replies.push(newReply);
+    }
     store.writeQuery({ query: MESSAGE_QUERY, data });
     toggleForm(false);
   };

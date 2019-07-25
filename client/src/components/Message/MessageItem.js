@@ -33,7 +33,7 @@ const MessageItem = props => {
           <span> {dislikesCount}</span>
         </div>
       </div>
-      <ReplyList messageId={id} replies={replies} />
+      <ReplyList messageId={id} replies={replies} orderBy={props.orderBy}/>
     </div>
   );
 };

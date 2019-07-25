@@ -92,7 +92,7 @@ const MessageList = props => {
           return (
             <div>
               {messageList.map(item => {
-                return <MessageItem key={item.id} {...item} />
+                return <MessageItem key={item.id} {...item} orderBy={orderBy.value}/>
               })}
               <div className='load-more'><button className='send-btn load' onClick={() => {onLoadMore(fetchMore, messageList)}}>Load more...</button></div>
             </div>
