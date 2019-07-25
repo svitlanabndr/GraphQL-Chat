@@ -21,7 +21,7 @@ const MessageForm = props => {
   };
 
   return (
-    <div className="message-item">
+    <div className="message-item top">
       <div className="body-wrapper">
 
         <input type="text" placeholder="Enter your message here..." value={body} onChange={e => setBody(e.target.value)} />
@@ -31,7 +31,7 @@ const MessageForm = props => {
           variables={{ body }}
         >
           {postMutation =>
-            <button onClick={postMutation}>Send</button>
+            <button className='send-btn' onClick={postMutation}>Send</button>
           }
         </Mutation>
       </div>

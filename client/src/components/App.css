@@ -77,6 +77,10 @@ body {
   outline: none;
 }
 
+.top {
+  border: solid 2px #142c96;
+}
+
 .message-item input::-webkit-input-placeholder {
   color: #ebebeb;
 }
@@ -138,4 +142,19 @@ svg {
 .load-more {
   width: 100%;
   float: left;
+}
+
+.send-btn {
+  width: 15%;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 85%;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+}
+
+.send-btn:hover {
+  color: #142c96;
+  border: solid 2px #142c96;
 }

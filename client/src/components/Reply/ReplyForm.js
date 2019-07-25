@@ -11,7 +11,10 @@ const ReplyForm = props => {
     const data = store.readQuery({
       query: MESSAGE_QUERY,
       variables: {
-        orderBy
+        orderBy,
+        filter: '', 
+        offset: 0, 
+        limit: 5
       }
     });
     const repliedMessage = data.messages.messageList.find(
