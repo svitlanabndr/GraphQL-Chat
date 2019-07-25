@@ -1,54 +1,102 @@
 import gql from 'graphql-tag';
 
-export const PRODUCT_QUERY = gql`
-  query productQuery($orderBy: ProductOrderByInput) {
-    products(orderBy: $orderBy) {
+export const MESSAGE_QUERY = gql`
+  query messageQuery($orderBy: MessageOrderByInput, $filter: String, $offset: Int, $limit: Int) {
+    messages(orderBy: $orderBy, filter: $filter, skip: $offset, first: $limit) {
       count
-      productList {
+      messageList {
         id
-        title
-        price
-        reviews {
+        body
+        likesCount
+        dislikesCount
+        replies {
           id
-          text
+          body
         }
       }
     }
   }
 `;
 
-export const POST_PRODUCT_MUTATION = gql`
-  mutation PostMutation($title: String!, $price: Float!) {
-    postProduct(title: $title, price: $price) {
+export const POST_MESSAGE_MUTATION = gql`
+  mutation PostMutation($body: String!) {
+    postMessage(body: $body) {
       id
-      title
-      price
-      reviews {
+      body
+      likesCount
+      dislikesCount
+      replies {
         id
-        text
+        body
       }
     }
   }
 `;
 
-export const POST_REVIEW_MUTATION = gql`
-  mutation PostMutation($productId: ID!, $text: String!) {
-    postReview(productId: $productId, text: $text) {
+export const POST_REPLY_MUTATION = gql`
+  mutation PostMutation($messageId: ID!, $body: String!) {
+    postReply(messageId: $messageId, body: $body) {
       id
-      text
+      body
     }
   }
 `;
 
-export const NEW_PRODUCTS_SUBSCRIPTION = gql`
-  subscription {
-    newProduct {
+export const UPDATE_LIKECOUNT_MUTATION = gql`
+  mutation PostMutation($id: ID!) {
+    updateLikeCount(id: $id) {
       id
-      title
-      price
-      reviews {
+      body
+      likesCount
+      dislikesCount
+      replies {
         id
-        text
+        body
+      }
+    }
+  }
+`;
+
+export const UPDATE_DISLIKECOUNT_MUTATION = gql`
+  mutation PostMutation($id: ID!) {
+    updateDislikeCount(id: $id) {
+      id
+      body
+      likesCount
+      dislikesCount
+      replies {
+        id
+        body
+      }
+    } 
+  }
+`;
+
+export const NEW_MESSAGES_SUBSCRIPTION = gql`
+  subscription {
+    newMessage {
+      id
+      body
+      likesCount
+      dislikesCount
+      replies {
+        id
+        body
+      }
+    }
+  }
+`;
+
+export const NEW_REACTIONS_SUBSCRIPTION = gql `
+  subscription {
+    newReaction {
+      id
+      body
+      likesCount
+      dislikesCount
+      replies {
+        id
+        body
       }
     }
   }

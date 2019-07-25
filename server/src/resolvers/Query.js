@@ -1,9 +1,9 @@
-async function products(parent, args, context) {
+async function messages(parent, args, context) {
     const where = args.filter 
-        ? { title: args.filter } 
+        ? { body_contains: args.filter }
         : {};
     
-    const productList = await context.prisma.products({
+    const messageList = await context.prisma.messages({
         where,
         skip: args.skip,
         first: args.first,
@@ -11,18 +11,18 @@ async function products(parent, args, context) {
     });
     
     const count = await context.prisma
-        .productsConnection({
+        .messagesConnection({
             where
         })
         .aggregate()
         .count();
 
     return {
-        productList,
+        messageList,
         count
     };
 }
 
 module.exports = {
-    products
+    messages
 }

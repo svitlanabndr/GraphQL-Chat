@@ -31,3 +31,161 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #ebebeb;
+}
+
+.message-list {
+  padding: 30px 15px 0 25px;
+  width: 60%;
+  min-height: 200px;
+  overflow: auto;
+  margin: 0 auto 0 auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.message-item {
+  overflow: hidden; 
+  margin: 26px auto;
+  display: block;
+  padding: 0;
+  width: 60%;
+  background: #ebebeb none repeat scroll 0 0;
+  border-radius: 5px;
+  font-family: Gill Sans, sans-serif;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+}
+.message-item h2,
+.message-item input {
+  border-radius: 5px;
+  background-color: #142c96;
+  color: #ebebeb;
+  text-align: left;
+  font-size: 14px;
+  margin-top: 0;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.message-item input,
+textarea {
+  border: none;
+  outline: none;
+}
+
+.top {
+  border: solid 2px #142c96;
+}
+
+.message-item input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #ebebeb;
+}
+
+.body-wrapper{
+  box-sizing: border-box;
+  margin: 20px;
+}
+
+.reaction {
+  text-align: left;
+  color: rgb(70, 70, 70);
+}
+
+.reply-list {
+  text-align: left;
+  padding: 20px;
+}
+
+.review-list-title {
+  margin-left: 90%;
+  color: #4760cf;
+}
+
+.reply, 
+textarea {
+  background-color: #4760cf;
+  color: white;;
+  border-radius: 5px;
+  width: 50%;
+  margin-left: 50%;
+  padding: 0 12px;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+svg {
+  width: 12px;
+  height: 12px
+}
+
+.id {
+  display: block;
+  font-style: italic;
+  color: rgb(92, 127, 202);
+  margin-left: 90%;
+  padding: 2px;
+}
+
+.reply .id {
+  color: rgb(130, 162, 230);
+  margin: 0;
+  margin-right: 80%;
+}
+
+.filter {
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  margin-top: 20px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #d3d3d3;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.load-more {
+  width: 100%;
+  float: left;
+}
+
+.send-btn {
+  width: 15%;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 85%;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.send-btn:hover {
+  color: #142c96;
+  border: solid 2px #142c96;
+}
+
+.reply + .send-btn {
+  margin-bottom: 20px;
+}
+
+textarea {
+  font-size: 14px;
+  padding-top: 12px;
+}
+
+.load {
+  margin: 0 auto 20px auto;
+}
+
+.alert {
+  margin: 20px auto;
+  color: #142c96;
+}
