@@ -1,5 +1,3 @@
-const { Prisma } = require('prisma-binding')
-
 function postMessage(parent, args, context, info) {
     return context.prisma.createMessage({
         body: args.body

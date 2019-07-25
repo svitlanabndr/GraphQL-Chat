@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Select from 'react-select';
 import { Query } from 'react-apollo';
 import MessageItem from './MessageItem';
 import { MESSAGE_QUERY, NEW_MESSAGES_SUBSCRIPTION, NEW_REACTIONS_SUBSCRIPTION } from '../../queries';
 import MessageForm from './MessageForm';
 
 const MessageList = props => {
-  const orderBy = 'createdAt_DESC';
+  const options = [
+    { value: 'createdAt_DESC', label: 'sorting by creation date descending' },
+    { value: 'createdAt_ASC', label: 'sorting by creation date ascending' },
+    { value: 'likesCount_DESC', label: 'sorting by likes descending' },
+    { value: 'likesCount_ASC', label: 'sorting by likes ascending' },
+    { value: 'dislikesCount_DESC', label: 'sorting by dislikes descending' },
+    { value: 'dislikesCount_ASC', label: 'sorting by dislikes ascending' },
+  ];
+
+  const [orderBy, setOrderBy] = useState(options[0]);
 
   const _subscribeToNewMessages = subscribeToMore => {
     subscribeToMore({
@@ -32,25 +42,32 @@ const MessageList = props => {
   };
 
   return (
-    <Query query={MESSAGE_QUERY} variables={{ orderBy }}>
-      {({ loading, error, data, subscribeToMore }) => {
-        if (loading) return <div>Loading...</div>;
-        if (error) return <div>Fetch error</div>;
-        _subscribeToNewMessages(subscribeToMore);
-        _subscribeToNewReactions(subscribeToMore);
+    <div className='message-list'>
+      <Select
+        value={orderBy}
+        onChange={setOrderBy}
+        options={options}
+      />
+      <Query query={MESSAGE_QUERY} variables={{ orderBy: orderBy.value }}>
+        {({ loading, error, data, subscribeToMore }) => {
+          if (loading) return <div>Loading...</div>;
+          if (error) return <div>Fetch error</div>;
+          _subscribeToNewMessages(subscribeToMore);
+          _subscribeToNewReactions(subscribeToMore);
 
-        const { messages: { messageList } } = data;
+          const { messages: { messageList } } = data;
 
-        return (
-          <div className="message-list">
-            {messageList.map(item => {
-              return <MessageItem key={item.id} {...item} />
-            })}
-            <MessageForm/>
-          </div>
-        );
-      }}
-    </Query>
+          return (
+            <div>
+              {messageList.map(item => {
+                return <MessageItem key={item.id} {...item} />
+              })}
+              <MessageForm/>
+            </div>
+          );
+        }}
+      </Query>
+    </div>
   );
 };
 
