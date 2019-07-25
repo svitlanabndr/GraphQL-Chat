@@ -5,6 +5,10 @@ import { POST_MESSAGE_MUTATION, MESSAGE_QUERY } from '../../queries';
 const MessageForm = props => {
   const [body, setBody] = useState('');
 
+  const checkInput = postMutation => {
+    if (body.trim().length > 0) postMutation(body);
+  }
+
   const _updateStoreAfterAddingMessage = (store, newMessage) => {
     const orderBy = 'createdAt_DESC';
     const data = store.readQuery({
@@ -25,13 +29,13 @@ const MessageForm = props => {
       <div className="body-wrapper">
 
         <input type="text" placeholder="Enter your message here..." value={body} onChange={e => setBody(e.target.value)} />
-
         <Mutation
           mutation={POST_MESSAGE_MUTATION}
           variables={{ body }}
+          onCompleted={ () => setBody('')} 
         >
           {postMutation =>
-            <button className='send-btn' onClick={postMutation}>Send</button>
+            <button className='send-btn' onClick={() => checkInput(postMutation)}>Send</button>
           }
         </Mutation>
       </div>

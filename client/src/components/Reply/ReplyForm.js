@@ -6,6 +6,10 @@ const ReplyForm = props => {
   const { messageId, toggleForm } = props;
   const [body, setBody] = useState('');
 
+  const checkInput = postMutation => {
+    if (body.trim().length > 0) postMutation(body);
+  }
+
   const _updateStoreAfterAddingReply = (store, newReply, messageId) => {
     const orderBy = 'createdAt_DESC';
     const data = store.readQuery({
@@ -44,7 +48,7 @@ const ReplyForm = props => {
         }}
       >
         {postMutation =>
-          <button onClick={postMutation}>Reply</button>
+          <button onClick={() => checkInput(postMutation)}>Reply</button>
         }
       </Mutation>
     </div>
